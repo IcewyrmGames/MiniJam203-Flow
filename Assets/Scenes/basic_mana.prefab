@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4407048714423214429}
   - component: {fileID: 655333477445373571}
   - component: {fileID: 2739364216057193449}
+  - component: {fileID: 3706243373634567345}
   m_Layer: 0
   m_Name: basic_mana
   m_TagString: Untagged
@@ -169,3 +170,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0d39e87996a734a8491afb198c1493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::click
+--- !u!114 &3706243373634567345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6413350550394374367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7f3188c75a2884f924969ef0445a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::detect_deletion_clicked
