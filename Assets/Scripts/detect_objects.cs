@@ -6,6 +6,7 @@ using UnityEngine;
 public class detect_objects : MonoBehaviour
 {
     List<String> objects = new List<string>();
+    public static event Action<detect_objects> OnIngredientAdd;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,6 +25,10 @@ public class detect_objects : MonoBehaviour
         Debug.Log("TRIGGERED");
         Debug.Log(other.name);
         objects.Add(other.name);
+        if (OnIngredientAdd != null)
+        {
+            OnIngredientAdd(this);
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
