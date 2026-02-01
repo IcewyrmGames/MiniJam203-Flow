@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class click : MonoBehaviour
+public class click_script : MonoBehaviour
 {
     private Vector3 mouseOffset;
     private float zCoordinate;
