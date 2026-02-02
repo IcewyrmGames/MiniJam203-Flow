@@ -21,8 +21,6 @@ public class detect_objects_for_deletion : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("TRIGGERED");
-        Debug.Log(other.name);
         if (OnObjectTouchBoundaries != null)
         {
             OnObjectTouchBoundaries(other.gameObject);

@@ -9,8 +9,6 @@ public class detect_mana_for_conversion : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("TRIGGERED");
-        Debug.Log(other.name);
         if (OnManaTouch != null)
         {
             String other_name = other.gameObject.name;
