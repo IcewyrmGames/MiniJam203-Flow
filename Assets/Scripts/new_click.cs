@@ -16,7 +16,7 @@ public class click : MonoBehaviour
     private float mouseDragSpeed = .1f;
 
     private Camera mainCamera;
-    private Vector3 velocity = Vector3.zero;
+    private Vector2 velocity = Vector2.zero;
     private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 
     private void Awake()
@@ -39,7 +39,7 @@ public class click : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray);
-        if (hit2D.collider != null && (hit2D.collider.gameObject.CompareTag("Draggable") || hit2D.collider.gameObject.layer == LayerMask.NameToLayer("Draggable")))
+        if (hit2D.collider != null && hit2D.collider.gameObject.CompareTag("Draggable"))
         {
             StartCoroutine(DragUpdate(hit2D.collider.gameObject));
         }
@@ -48,20 +48,20 @@ public class click : MonoBehaviour
 
     private IEnumerator DragUpdate(GameObject clickedObject)
     {
-        float initialDistance = Vector3.Distance(clickedObject.transform.position, mainCamera.transform.position);
-        clickedObject.TryGetComponent<Rigidbody>(out var rb);
+        float initialDistance = Vector2.Distance(clickedObject.transform.position, mainCamera.transform.position);
+        clickedObject.TryGetComponent<Rigidbody2D>(out var rb);
         while (mouseClick.ReadValue<float>() != 0)
         {
-            Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+            Vector3 ray = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             if (rb != null)
             {
-                Vector3 direction = ray.GetPoint(initialDistance) - clickedObject.transform.position;
+                Vector2 direction = ray - clickedObject.transform.position;
                 rb.linearVelocity = direction * mouseDragPhysicsSpeed;
                 yield return waitForFixedUpdate;
             }
             else
             {
-                clickedObject.transform.position = Vector3.SmoothDamp(clickedObject.transform.position, ray.GetPoint(initialDistance), ref velocity, mouseDragSpeed);
+                clickedObject.transform.position = Vector2.SmoothDamp(clickedObject.transform.position, ray, ref velocity, mouseDragSpeed);
                 yield return null;
             }
         }
