@@ -20,10 +20,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
         }
         while (ManaIsFlowing)
         {
-            Vector3 startPosition = SpawnLocationObject.transform.position;
+            Vector2 startPosition = SpawnLocationObject.transform.position;
             for (int i = 0; i < SpawnCount; i++)
             {
-                Vector3 spawnPosition = startPosition + (Random.insideUnitSphere * SpawnScatterRadius);
+                Vector2 spawnPosition = startPosition + (Random.insideUnitCircle * SpawnScatterRadius);
                 Instantiate(SpawnObject, spawnPosition, Quaternion.identity);    
             }
             
