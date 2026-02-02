@@ -18,10 +18,19 @@ public class detect_deletion_clicked : MonoBehaviour
         void OnEnable()
     {
         trigger_delete_components.OnDeleteButtonClicked += AutoDestroy;
+        detect_objects_for_deletion.OnObjectTouchBoundaries += SingleDestroy;
     }
 
     void AutoDestroy()
     {
+        if (this.gameObject != null)
+        Destroy(this.gameObject);
+    }
+
+    void SingleDestroy(GameObject obj)
+    {
+        if (this == null) return;
+        if (this.gameObject != null && obj.GetInstanceID() == this.gameObject.GetInstanceID())
         Destroy(this.gameObject);
     }
 }
