@@ -23,6 +23,7 @@ public class detect_deletion_clicked : MonoBehaviour
 
     void AutoDestroy()
     {
+        if (this == null) return;
         if (this.gameObject != null)
         Destroy(this.gameObject);
     }
