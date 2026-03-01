@@ -5,7 +5,7 @@ public class toggle_mana : MonoBehaviour
 {
 
     public static event Action<bool> OnManaFlowClicked;
-    private bool lowered = true;
+    private bool lowered = false;
 
     void OnEnable()
     {

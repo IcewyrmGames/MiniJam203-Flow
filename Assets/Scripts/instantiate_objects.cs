@@ -10,6 +10,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public GameObject SpawnLocationObject; // GameObject to match for spawn point location
     public float SpawnScatterRadius = 0.5f; // Prevents object overlap at spawn point
 
+    private float waitTime = 0;
+
 
     void OnEnable()
     {
@@ -17,16 +19,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
         select_object_for_mana.OnManaTypeSelect += switchManaObject;
     }
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public IEnumerator Start()
+    public void Update()
     {
-        if (SpawnObject == null || SpawnLocationObject == null)
-        {
-            Debug.LogError("Assign SpawnObject and SpawnLocationObject in Inspector.");
-            yield break;
-        }
-        while (ManaIsFlowing)
+        waitTime += Time.deltaTime;
+        if (waitTime >= SpawnRateSeconds && ManaIsFlowing)
         {
             Vector2 startPosition = SpawnLocationObject.transform.position;
             for (int i = 0; i < SpawnCount; i++)
@@ -34,9 +30,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 Vector2 spawnPosition = startPosition + (Random.insideUnitCircle * SpawnScatterRadius);
                 Instantiate(SpawnObject, spawnPosition, Quaternion.identity);
             }
-
-            float waitTime = Mathf.Max(0.1f, SpawnRateSeconds); // Limits spawn rate to 1 frame (prevent crashing)
-            yield return new WaitForSeconds(waitTime);
+            waitTime = 0f;
         }
     }
 
