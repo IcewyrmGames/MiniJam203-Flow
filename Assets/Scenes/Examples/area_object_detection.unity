@@ -177,9 +177,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6413350550394374367, guid: 9aa8d274adfdde94198b725976026af9, type: 3}
       propertyPath: m_TagString
-      value: Test
+      value: Draggable
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2739364216057193449, guid: 9aa8d274adfdde94198b725976026af9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -573,6 +574,7 @@ GameObject:
   - component: {fileID: 1937791043}
   - component: {fileID: 1937791042}
   - component: {fileID: 1937791041}
+  - component: {fileID: 1937791044}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -641,6 +643,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1937791044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937791040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a3cc2f261e1814cad5276bacdef2ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::click
+  mouseClick:
+    m_Name: Mouse Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d551dc97-1d68-402f-a116-e27ba83d9f7c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 8e1968fd-1394-4e2c-a3a2-43fe5b706abd
+      m_Path: <Mouse>/press
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Click
+      m_Flags: 0
+    m_Flags: 0
+  mouseDragPhysicsSpeed: 10
+  mouseDragSpeed: 0.1
 --- !u!1001 &2008230173
 PrefabInstance:
   m_ObjectHideFlags: 0
